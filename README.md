@@ -10,12 +10,3 @@ Biswanath Saha
 &nbsp; [LinkedIn](https://www.linkedin.com/in/biswanathamz/)]
 
 
-
-## Contribution Guidelines
-
-Read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg?style=flat-square)](https://gitpod.io/#https://github.com/TheAlgorithms/Python)
-
-
-See our [directory](DIRECTORY.md).
