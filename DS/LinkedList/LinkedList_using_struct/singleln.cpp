@@ -5,6 +5,20 @@ struct node {
     int data;
     struct node *next;
 };
+void insert_node_at_begin(struct node **head, int data){
+    struct node *newNode;
+    newNode = (struct node *) malloc(sizeof(struct node));
+    newNode->data = data;
+    if(*head == NULL){
+        newNode->next = NULL;
+        *head = newNode;
+    }
+    else{
+        newNode->next = *head;
+        *head = newNode;
+    }
+    cout<<data<<" is added into list, Position : at Beginning"<<endl;
+}
 void insert_node_at_end(struct node **head,int data){
     struct node *temp;
     struct node *newNode;
@@ -43,7 +57,8 @@ int main(){
     struct node *head;
     while(1){
         cout<<"Menu : (Enter accordingly)"<<endl;
-        cout<<"Enter 1 to a node at the end of a linked list"<<endl;
+        cout<<"Enter 1 to add a node at the end of the linked list"<<endl;
+        cout<<"Enter 2 to add a node at the beginning of the linked list"<<endl;
         cout<<"Enter 5 to display linked list"<<endl;
         cin>>input;
         switch(input){
@@ -51,6 +66,11 @@ int main(){
                 cout<<"Enter the integer value to add in the list : ";
                 cin>>valinput;
                 insert_node_at_end(&head,valinput);
+                break;
+            case 2:
+                cout<<"Enter the integer value to add in the list : ";
+                cin>>valinput;
+                insert_node_at_begin(&head,valinput);
                 break;
             case 5:
                 displayLL(head);
