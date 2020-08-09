@@ -14,7 +14,7 @@ class Queue {
         this->rear = -1;
     }
     bool is_full(){
-        if(this->front > (this->size-1)){
+        if(this->front == (this->size-1)){
            return true;
         }
         return false;
@@ -27,12 +27,13 @@ class Queue {
     }
     void enqueue(){
         int element;
+        if (this->is_full()){
+            cout<<"Queue is full !"<<endl;
+            return;
+        }
         cout<<"Please enter element(int) to add in the queue : ";
         cin>>element;
-        if (this->is_full()){
-            cout<<"Queue is full !";
-        }
-        else if(this->is_empty()){
+        if(this->is_empty()){
             this->front = 0;
             this->rear = 0;
         }
@@ -42,11 +43,16 @@ class Queue {
         *(this->queueptr+this->front) = element;
     }
 
-    void dequeue(){
-        int element;
-        cout<<"Please enter element(int) to add in the queue : ";
-        cin>>element;
-        if()   
+    void front_element(){
+        if(this->is_empty()){
+            cout<<"Queue is empty"<<endl;
+        }
+        else{
+            cout<<"Front element is : "<<this->queueptr[this->front]<<endl;
+        }
+    }
+
+    void dequeue(){ 
     }
 };
 
@@ -54,13 +60,14 @@ int main(){
     int input_var,loop_var=0;
     Queue queueobj;
     while(loop_var==0){
-        cout<<"Enter 1 for add or 2 for get and others for exit :";
+        cout<<"Enter 1 for add or 2 for get and and 3 for delete and others for exit :";
         cin>>input_var;
         switch(input_var){
             case 1:
                 queueobj.enqueue();
                 break;
             case 2:
+                queueobj.front_element();
                 break;
             default:
                 loop_var=1;
