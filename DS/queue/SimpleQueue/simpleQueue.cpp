@@ -14,7 +14,7 @@ class Queue {
         this->rear = -1;
     }
     bool is_full(){
-        if(this->front == (this->size-1)){
+        if(this->rear == (this->size-1)){
            return true;
         }
         return false;
@@ -38,9 +38,9 @@ class Queue {
             this->rear = 0;
         }
         else{
-            this->front++;
+            this->rear++;
         }
-        *(this->queueptr+this->front) = element;
+        *(this->queueptr+this->rear) = element;
     }
 
     void front_element(){
@@ -53,6 +53,21 @@ class Queue {
     }
 
     void dequeue(){ 
+        if(this->is_empty()){
+            cout<<"Queue is empty"<<endl;
+        }
+        else{
+            if(this->front == this->rear){
+                this->front = -1;
+                this->rear = -1;
+            }
+            else{
+                cout<<this->front<<" : "<<this->rear<<endl;
+                this->front++;
+                cout<<this->front<<" : "<<this->rear<<endl;
+            }
+            cout<<"Dequeue Operation successfully performed"<<endl;
+        }
     }
 };
 
@@ -60,7 +75,7 @@ int main(){
     int input_var,loop_var=0;
     Queue queueobj;
     while(loop_var==0){
-        cout<<"Enter 1 for add or 2 for get and and 3 for delete and others for exit :";
+        cout<<"Enter 1 for add or 2 for get and and 3 for dequeue and others for exit :";
         cin>>input_var;
         switch(input_var){
             case 1:
@@ -68,6 +83,9 @@ int main(){
                 break;
             case 2:
                 queueobj.front_element();
+                break;
+            case 3:
+                queueobj.dequeue();
                 break;
             default:
                 loop_var=1;
